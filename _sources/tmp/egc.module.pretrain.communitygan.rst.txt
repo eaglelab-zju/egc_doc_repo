@@ -1,0 +1,29 @@
+egc.module.pretrain.communitygan package
+========================================
+
+Submodules
+----------
+
+egc.module.pretrain.communitygan.agm\_pretrain module
+-----------------------------------------------------
+
+.. automodule:: egc.module.pretrain.communitygan.agm_pretrain
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.pretrain.communitygan.kmeans\_pretrain module
+--------------------------------------------------------
+
+.. automodule:: egc.module.pretrain.communitygan.kmeans_pretrain
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.module.pretrain.communitygan
+   :members:
+   :undoc-members:
+   :show-inheritance:

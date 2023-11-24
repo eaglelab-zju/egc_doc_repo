@@ -1,0 +1,37 @@
+egc.utils.graph\_augmentation.transforms package
+================================================
+
+Submodules
+----------
+
+egc.utils.graph\_augmentation.transforms.feature\_dropout module
+----------------------------------------------------------------
+
+.. automodule:: egc.utils.graph_augmentation.transforms.feature_dropout
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.utils.graph\_augmentation.transforms.node\_shuffle module
+-------------------------------------------------------------
+
+.. automodule:: egc.utils.graph_augmentation.transforms.node_shuffle
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.utils.graph\_augmentation.transforms.random\_mask module
+------------------------------------------------------------
+
+.. automodule:: egc.utils.graph_augmentation.transforms.random_mask
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.utils.graph_augmentation.transforms
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,21 @@
+egc.model.node\_embedding.structure\_learning package
+=====================================================
+
+Submodules
+----------
+
+egc.model.node\_embedding.structure\_learning.sublime module
+------------------------------------------------------------
+
+.. automodule:: egc.model.node_embedding.structure_learning.sublime
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.model.node_embedding.structure_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:

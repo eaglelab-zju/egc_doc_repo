@@ -1,0 +1,45 @@
+egc.module.pretrain.ComE package
+================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.module.pretrain.ComE.SDG_utils
+
+Submodules
+----------
+
+egc.module.pretrain.ComE.community\_embeddings\_ComE module
+-----------------------------------------------------------
+
+.. automodule:: egc.module.pretrain.ComE.community_embeddings_ComE
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.pretrain.ComE.context\_embeddings\_ComE module
+---------------------------------------------------------
+
+.. automodule:: egc.module.pretrain.ComE.context_embeddings_ComE
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.pretrain.ComE.node\_embeddings\_ComE module
+------------------------------------------------------
+
+.. automodule:: egc.module.pretrain.ComE.node_embeddings_ComE
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.module.pretrain.ComE
+   :members:
+   :undoc-members:
+   :show-inheritance:

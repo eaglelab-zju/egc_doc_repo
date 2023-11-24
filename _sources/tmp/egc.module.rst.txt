@@ -1,0 +1,20 @@
+egc.module package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.module.layers
+   egc.module.loss
+   egc.module.pretrain
+
+Module contents
+---------------
+
+.. automodule:: egc.module
+   :members:
+   :undoc-members:
+   :show-inheritance:

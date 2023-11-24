@@ -1,0 +1,21 @@
+egc.model.graph\_clustering.overlapping package
+===============================================
+
+Submodules
+----------
+
+egc.model.graph\_clustering.overlapping.communityGAN module
+-----------------------------------------------------------
+
+.. automodule:: egc.model.graph_clustering.overlapping.communityGAN
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.model.graph_clustering.overlapping
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,20 @@
+egc package
+===========
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.model
+   egc.module
+   egc.utils
+
+Module contents
+---------------
+
+.. automodule:: egc
+   :members:
+   :undoc-members:
+   :show-inheritance:

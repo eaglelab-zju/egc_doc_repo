@@ -1,0 +1,117 @@
+egc.model.node\_embedding package
+=================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.model.node_embedding.structure_learning
+
+Submodules
+----------
+
+egc.model.node\_embedding.SENet module
+--------------------------------------
+
+.. automodule:: egc.model.node_embedding.SENet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.ae module
+-----------------------------------
+
+.. automodule:: egc.model.node_embedding.ae
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.agc module
+------------------------------------
+
+.. automodule:: egc.model.node_embedding.agc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.age module
+------------------------------------
+
+.. automodule:: egc.model.node_embedding.age
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.dgi module
+------------------------------------
+
+.. automodule:: egc.model.node_embedding.dgi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.gae module
+------------------------------------
+
+.. automodule:: egc.model.node_embedding.gae
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.gmi module
+------------------------------------
+
+.. automodule:: egc.model.node_embedding.gmi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.igae module
+-------------------------------------
+
+.. automodule:: egc.model.node_embedding.igae
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.mvgrl module
+--------------------------------------
+
+.. automodule:: egc.model.node_embedding.mvgrl
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.saif module
+-------------------------------------
+
+.. automodule:: egc.model.node_embedding.saif
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.sgc module
+------------------------------------
+
+.. automodule:: egc.model.node_embedding.sgc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.model.node\_embedding.vgae module
+-------------------------------------
+
+.. automodule:: egc.model.node_embedding.vgae
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.model.node_embedding
+   :members:
+   :undoc-members:
+   :show-inheritance:

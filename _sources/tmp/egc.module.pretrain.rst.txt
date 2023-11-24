@@ -1,0 +1,19 @@
+egc.module.pretrain package
+===========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.module.pretrain.ComE
+   egc.module.pretrain.communitygan
+
+Module contents
+---------------
+
+.. automodule:: egc.module.pretrain
+   :members:
+   :undoc-members:
+   :show-inheritance:

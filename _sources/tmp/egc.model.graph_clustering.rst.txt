@@ -1,0 +1,30 @@
+egc.model.graph\_clustering package
+===================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.model.graph_clustering.disjoint
+   egc.model.graph_clustering.overlapping
+
+Submodules
+----------
+
+egc.model.graph\_clustering.base module
+---------------------------------------
+
+.. automodule:: egc.model.graph_clustering.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.model.graph_clustering
+   :members:
+   :undoc-members:
+   :show-inheritance:

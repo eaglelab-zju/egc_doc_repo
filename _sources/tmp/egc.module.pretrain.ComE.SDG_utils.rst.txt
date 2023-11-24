@@ -1,0 +1,29 @@
+egc.module.pretrain.ComE.SDG\_utils package
+===========================================
+
+Submodules
+----------
+
+egc.module.pretrain.ComE.SDG\_utils.cython\_utils module
+--------------------------------------------------------
+
+.. automodule:: egc.module.pretrain.ComE.SDG_utils.cython_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.pretrain.ComE.SDG\_utils.training\_sdg\_inner module
+---------------------------------------------------------------
+
+.. automodule:: egc.module.pretrain.ComE.SDG_utils.training_sdg_inner
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.module.pretrain.ComE.SDG_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

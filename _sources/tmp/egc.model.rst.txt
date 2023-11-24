@@ -1,0 +1,19 @@
+egc.model package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.model.graph_clustering
+   egc.model.node_embedding
+
+Module contents
+---------------
+
+.. automodule:: egc.model
+   :members:
+   :undoc-members:
+   :show-inheritance:

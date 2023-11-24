@@ -1,0 +1,21 @@
+egc.utils.data\_loader package
+==============================
+
+Submodules
+----------
+
+egc.utils.data\_loader.naive\_data\_loader module
+-------------------------------------------------
+
+.. automodule:: egc.utils.data_loader.naive_data_loader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.utils.data_loader
+   :members:
+   :undoc-members:
+   :show-inheritance:

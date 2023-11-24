@@ -1,0 +1,29 @@
+egc.utils.graph\_augmentation package
+=====================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   egc.utils.graph_augmentation.transforms
+
+Submodules
+----------
+
+egc.utils.graph\_augmentation.augs module
+-----------------------------------------
+
+.. automodule:: egc.utils.graph_augmentation.augs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.utils.graph_augmentation
+   :members:
+   :undoc-members:
+   :show-inheritance:

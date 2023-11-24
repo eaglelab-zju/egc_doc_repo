@@ -1,0 +1,157 @@
+egc.module.layers package
+=========================
+
+Submodules
+----------
+
+egc.module.layers.batch\_gcn module
+-----------------------------------
+
+.. automodule:: egc.module.layers.batch_gcn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.cluster\_secomm module
+----------------------------------------
+
+.. automodule:: egc.module.layers.cluster_secomm
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.disc\_communitygan module
+-------------------------------------------
+
+.. automodule:: egc.module.layers.disc_communitygan
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.disc\_dgi module
+----------------------------------
+
+.. automodule:: egc.module.layers.disc_dgi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.disc\_gmi module
+----------------------------------
+
+.. automodule:: egc.module.layers.disc_gmi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.disc\_mvgrl module
+------------------------------------
+
+.. automodule:: egc.module.layers.disc_mvgrl
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.gat\_daegc module
+-----------------------------------
+
+.. automodule:: egc.module.layers.gat_daegc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.gcl\_sublime module
+-------------------------------------
+
+.. automodule:: egc.module.layers.gcl_sublime
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.gcn module
+----------------------------
+
+.. automodule:: egc.module.layers.gcn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.gcn\_sublime module
+-------------------------------------
+
+.. automodule:: egc.module.layers.gcn_sublime
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.gene\_communitygan module
+-------------------------------------------
+
+.. automodule:: egc.module.layers.gene_communitygan
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.gmi module
+----------------------------
+
+.. automodule:: egc.module.layers.gmi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.grace\_secomm module
+--------------------------------------
+
+.. automodule:: egc.module.layers.grace_secomm
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.graph\_learner module
+---------------------------------------
+
+.. automodule:: egc.module.layers.graph_learner
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.inner\_product\_de module
+-------------------------------------------
+
+.. automodule:: egc.module.layers.inner_product_de
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.multilayer\_dnn module
+----------------------------------------
+
+.. automodule:: egc.module.layers.multilayer_dnn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.multilayer\_gnn module
+----------------------------------------
+
+.. automodule:: egc.module.layers.multilayer_gnn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+egc.module.layers.selfexpr\_secomm module
+-----------------------------------------
+
+.. automodule:: egc.module.layers.selfexpr_secomm
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.module.layers
+   :members:
+   :undoc-members:
+   :show-inheritance:

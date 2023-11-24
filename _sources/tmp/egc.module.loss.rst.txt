@@ -1,0 +1,21 @@
+egc.module.loss package
+=======================
+
+Submodules
+----------
+
+egc.module.loss.contrastive\_loss module
+----------------------------------------
+
+.. automodule:: egc.module.loss.contrastive_loss
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: egc.module.loss
+   :members:
+   :undoc-members:
+   :show-inheritance:
