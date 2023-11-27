@@ -157,6 +157,7 @@ DAEGC
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: target_distribution, get_M
 
 AGCN
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -165,6 +166,7 @@ AGCN
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: MLP_L, MLP_1, MLP_2, MLP_3
 
 DGC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -191,6 +193,7 @@ GDCL
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: Readout, target_distribution
 
 GALA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

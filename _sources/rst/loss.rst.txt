@@ -8,3 +8,4 @@ loss.contrastive\_loss
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: mask_correlated_samples

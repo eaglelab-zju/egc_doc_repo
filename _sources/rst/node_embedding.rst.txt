@@ -13,6 +13,8 @@ GAE
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: bce_loss
+
 
 IGAE
 --------------------
@@ -37,6 +39,7 @@ SGC
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: eliminate_zeros, scale, LinTrans,
 
 AGE
 --------------------
@@ -53,6 +56,7 @@ MVGRL
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: Readout
 
 SENet
 --------------------
@@ -61,6 +65,7 @@ SENet
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: get_improved_graph
 
 SAIF
 --------------------
@@ -77,6 +82,7 @@ DGI
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: avg_readout
 
 GMI
 --------------------
@@ -85,6 +91,7 @@ GMI
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: mi_loss_jsd, reconstruct_loss, preprocess_adj
 
 AGC
 --------------------
