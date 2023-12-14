@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>egc.utils.evaluation &mdash; EGC 0.2.1 documentation</title>
+  <title>egc.utils.evaluation &mdash; EGC 0.2.4 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -15,7 +15,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=158ece9d"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=4d875023"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -596,6 +596,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../rst/utils.html#module-egc.utils.evaluation">utils.evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../rst/utils.html#egc.utils.evaluation.purity"><code class="docutils literal notranslate"><span class="pre">purity()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../rst/utils.html#egc.utils.evaluation.best_mapping"><code class="docutils literal notranslate"><span class="pre">best_mapping()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../rst/utils.html#egc.utils.evaluation.evaluation"><code class="docutils literal notranslate"><span class="pre">evaluation()</span></code></a></li>
 </ul>
@@ -704,9 +705,19 @@
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linear_sum_assignment</span> <span class="k">as</span> <span class="n">linear_assignment</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span> <span class="k">as</span> <span class="n">ACC</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">adjusted_mutual_info_score</span> <span class="k">as</span> <span class="n">NMI</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">adjusted_mutual_info_score</span> <span class="k">as</span> <span class="n">AMI</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">adjusted_rand_score</span> <span class="k">as</span> <span class="n">ARI</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span> <span class="k">as</span> <span class="n">F1</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">normalized_mutual_info_score</span> <span class="k">as</span> <span class="n">NMI</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.cluster</span> <span class="kn">import</span> <span class="n">contingency_matrix</span> <span class="k">as</span> <span class="n">ctg</span>
+
+
+<div class="viewcode-block" id="purity"><a class="viewcode-back" href="../../../tmp/egc.utils.html#egc.utils.evaluation.purity">[docs]</a><span class="k">def</span> <span class="nf">purity</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="c1"># compute contingency matrix (also called confusion matrix)</span>
+    <span class="n">contingency_matrix</span> <span class="o">=</span> <span class="n">ctg</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="c1"># return purity</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">contingency_matrix</span><span class="p">,</span>
+                          <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">contingency_matrix</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="best_mapping"><a class="viewcode-back" href="../../../tmp/egc.utils.html#egc.utils.evaluation.best_mapping">[docs]</a><span class="k">def</span> <span class="nf">best_mapping</span><span class="p">(</span>
@@ -750,13 +761,7 @@
 <span class="sd">        labels_pred (torch.Tensor or np.ndarray): Predicted Community.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Tuple[float]: (ARI, NMI, ACC)</span>
-
-<span class="sd">            - ARI: Adjusted Rand Index.</span>
-
-<span class="sd">            - NMI: Normalized Mutual Informtion.</span>
-
-<span class="sd">            - ACC: Accuracy.</span>
+<span class="sd">        Tuple[float]: (ARI, NMI, AMI, ACC, Micro-F1, Macro-F1, purity)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">labels_true</span><span class="p">):</span>
         <span class="n">labels_true</span> <span class="o">=</span> <span class="n">labels_true</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -765,10 +770,12 @@
     <span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span> <span class="o">=</span> <span class="n">best_mapping</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
     <span class="n">ARI_score</span> <span class="o">=</span> <span class="n">ARI</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
     <span class="n">NMI_score</span> <span class="o">=</span> <span class="n">NMI</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
+    <span class="n">AMI_score</span> <span class="o">=</span> <span class="n">AMI</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
     <span class="n">ACC_score</span> <span class="o">=</span> <span class="n">ACC</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
     <span class="n">Micro_F1_score</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;micro&quot;</span><span class="p">)</span>
     <span class="n">Macro_F1_score</span> <span class="o">=</span> <span class="n">F1</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ARI_score</span><span class="p">,</span> <span class="n">NMI_score</span><span class="p">,</span> <span class="n">ACC_score</span><span class="p">,</span> <span class="n">Micro_F1_score</span><span class="p">,</span> <span class="n">Macro_F1_score</span></div>
+    <span class="n">purity_score</span> <span class="o">=</span> <span class="n">purity</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ARI_score</span><span class="p">,</span> <span class="n">NMI_score</span><span class="p">,</span> <span class="n">AMI_score</span><span class="p">,</span> <span class="n">ACC_score</span><span class="p">,</span> <span class="n">Micro_F1_score</span><span class="p">,</span> <span class="n">Macro_F1_score</span><span class="p">,</span> <span class="n">purity_score</span></div>
 
 
 <span class="c1"># if __name__==&#39;__main__&#39;:</span>

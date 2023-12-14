@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>egc.model.node_embedding.vgae &mdash; EGC 0.2.1 documentation</title>
+  <title>egc.model.node_embedding.vgae &mdash; EGC 0.2.4 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -15,7 +15,7 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=158ece9d"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4d875023"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -596,6 +596,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../rst/utils.html#module-egc.utils.evaluation">utils.evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../rst/utils.html#egc.utils.evaluation.purity"><code class="docutils literal notranslate"><span class="pre">purity()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../rst/utils.html#egc.utils.evaluation.best_mapping"><code class="docutils literal notranslate"><span class="pre">best_mapping()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../rst/utils.html#egc.utils.evaluation.evaluation"><code class="docutils literal notranslate"><span class="pre">evaluation()</span></code></a></li>
 </ul>
@@ -742,8 +743,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">gcn_mu</span> <span class="o">=</span> <span class="n">GCN</span><span class="p">(</span><span class="n">hidden_units_1</span><span class="p">,</span> <span class="n">hidden_units_2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gcn_sigma</span> <span class="o">=</span> <span class="n">GCN</span><span class="p">(</span><span class="n">hidden_units_1</span><span class="p">,</span> <span class="n">hidden_units_2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Encoder.forward"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.Encoder.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features_norm</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-                <span class="n">adj_norm</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<div class="viewcode-block" id="Encoder.forward"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.Encoder.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">features_norm</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">adj_norm</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;forward</span>
 
 <span class="sd">        Args:</span>
@@ -763,10 +767,12 @@
 <div class="viewcode-block" id="Decoder"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.Decoder">[docs]</a><span class="k">class</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decoder for VGAE&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Decoder.forward"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.Decoder.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                <span class="n">mu</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-                <span class="n">log_sigma</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-                <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="Decoder.forward"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.Decoder.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mu</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">log_sigma</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Decoder</span>
 
 <span class="sd">        Args:</span>
@@ -875,7 +881,11 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_loss</span><span class="p">(</span><span class="n">adj_hat</span><span class="p">,</span> <span class="n">mu</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
                                     <span class="n">log_sigma</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="VGAE.fit"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.VGAE.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">sp</span><span class="o">.</span><span class="n">lil_matrix</span><span class="p">,</span> <span class="n">adj_orig</span><span class="p">:</span> <span class="n">sp</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">):</span>
+<div class="viewcode-block" id="VGAE.fit"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.VGAE.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">features</span><span class="p">:</span> <span class="n">sp</span><span class="o">.</span><span class="n">lil_matrix</span><span class="p">,</span>
+        <span class="n">adj_orig</span><span class="p">:</span> <span class="n">sp</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;fit</span>
 
 <span class="sd">        Args:</span>
@@ -891,8 +901,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">=</span> <span class="n">adj_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">adj_sum</span> <span class="o">=</span> <span class="n">adj_orig</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">/</span>
-                     <span class="nb">float</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">-</span> <span class="n">adj_sum</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">-</span> <span class="n">adj_sum</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pos_weight</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">-</span>
                                 <span class="n">adj_sum</span><span class="p">)</span> <span class="o">/</span> <span class="n">adj_sum</span>
 
@@ -960,7 +970,10 @@
 <div class="viewcode-block" id="loss_function"><a class="viewcode-back" href="../../../../tmp/egc.model.node_embedding.html#egc.model.node_embedding.vgae.loss_function">[docs]</a><span class="k">def</span> <span class="nf">loss_function</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">,</span> <span class="n">n_nodes</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">pos_weight</span><span class="p">):</span>
     <span class="n">pos_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">([</span><span class="n">pos_weight</span><span class="p">])</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="n">norm</span> <span class="o">*</span> <span class="n">F</span><span class="o">.</span><span class="n">binary_cross_entropy_with_logits</span><span class="p">(</span>
-        <span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">pos_weight</span><span class="o">=</span><span class="n">pos_weight</span><span class="p">)</span>
+        <span class="n">preds</span><span class="p">,</span>
+        <span class="n">labels</span><span class="p">,</span>
+        <span class="n">pos_weight</span><span class="o">=</span><span class="n">pos_weight</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="c1"># see Appendix B from VAE paper:</span>
     <span class="c1"># Kingma and Welling. Auto-Encoding Variational Bayes. ICLR, 2014</span>
@@ -1091,9 +1104,8 @@
         <span class="n">adj_orig</span> <span class="o">=</span> <span class="n">adj_orig</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">adj_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">adj_orig_graph</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">from_scipy</span><span class="p">(</span><span class="n">adj_orig</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">pos_weight</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="nb">float</span><span class="p">(</span><span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">adj_csr</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span>
-            <span class="n">adj_csr</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos_weight</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span>
+                                <span class="n">adj_csr</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="n">adj_csr</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span>
             <span class="p">(</span><span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">adj_csr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">adj_csr</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
 

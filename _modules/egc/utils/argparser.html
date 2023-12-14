@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>egc.utils.argparser &mdash; EGC 0.2.1 documentation</title>
+  <title>egc.utils.argparser &mdash; EGC 0.2.4 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -15,7 +15,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=158ece9d"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=4d875023"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -596,6 +596,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../rst/utils.html#module-egc.utils.evaluation">utils.evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../rst/utils.html#egc.utils.evaluation.purity"><code class="docutils literal notranslate"><span class="pre">purity()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../rst/utils.html#egc.utils.evaluation.best_mapping"><code class="docutils literal notranslate"><span class="pre">best_mapping()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../rst/utils.html#egc.utils.evaluation.evaluation"><code class="docutils literal notranslate"><span class="pre">evaluation()</span></code></a></li>
 </ul>
@@ -706,34 +707,167 @@
 
 <span class="n">type_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;str&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">}</span>
 
-<span class="c1">#: Supported graph clustering models.</span>
-<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;pca_kmeans&quot;</span><span class="p">:</span> <span class="s2">&quot;PCA with Kmeans.&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sgc_kmeans&quot;</span><span class="p">:</span> <span class="s2">&quot;SGC with Kmeans.&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dgi_kmeans&quot;</span><span class="p">:</span> <span class="s2">&quot;DGI with Kmeans&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gmi_kmeans&quot;</span><span class="p">:</span> <span class="s2">&quot;GMI with Kmeans&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;DANMF&quot;</span><span class="p">:</span> <span class="s2">&quot;DANMF&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;MNMF&quot;</span><span class="p">:</span> <span class="s2">&quot;MNMF&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;VGAECD&quot;</span><span class="p">:</span> <span class="s2">&quot;VGAECD&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CommunityGAN&quot;</span><span class="p">:</span> <span class="s2">&quot;CommunityGAN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gae_kmeans&quot;</span><span class="p">:</span> <span class="s2">&quot;GAE with Kmeans&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;vgae_kmeans&quot;</span><span class="p">:</span> <span class="s2">&quot;VGAE with Kmeans&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;DFCN&quot;</span><span class="p">:</span> <span class="s2">&quot;DFCN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AGE&quot;</span><span class="p">:</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;DAEGC&quot;</span><span class="p">:</span> <span class="s2">&quot;DAEGC&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SEComm&quot;</span><span class="p">:</span> <span class="s2">&quot;SEComm&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;cc&quot;</span><span class="p">:</span> <span class="s2">&quot;Contrastive Clustering&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SDCN&quot;</span><span class="p">:</span> <span class="s2">&quot;SDCN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SENet_kmeans&quot;</span><span class="p">:</span> <span class="s2">&quot;SENEet with kmeans&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;ComE&quot;</span><span class="p">:</span> <span class="s2">&quot;ComE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AGCN&quot;</span><span class="p">:</span> <span class="s2">&quot;AGCN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AGC&quot;</span><span class="p">:</span> <span class="s2">&quot;AGC&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;GALA&quot;</span><span class="p">:</span> <span class="s2">&quot;GALA&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;idec&quot;</span><span class="p">:</span> <span class="s2">&quot;IDEC&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;clusternet&quot;</span><span class="p">:</span> <span class="s2">&quot;ClusterNet&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;GDCL&quot;</span><span class="p">:</span> <span class="s2">&quot;GDCL&quot;</span><span class="p">,</span>  <span class="c1"># BUG exits</span>
-    <span class="s2">&quot;MVGRL&quot;</span><span class="p">:</span> <span class="s2">&quot;MVGRL&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SUBLIME&quot;</span><span class="p">:</span> <span class="s2">&quot;SUBLIME&quot;</span><span class="p">,</span>
+<span class="c1">#: Info of the models supported.</span>
+<span class="n">models</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;pca_kmeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PCA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;PCA with Kmeans.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;sgc_kmeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SGC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;SGC with Kmeans.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/1902.07153.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/Tiiiger/SGC&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;dgi_kmeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DGI&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;DGI with Kmeans&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/abs/1809.10341&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/PetarV-/DGI&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;gmi_kmeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GMI&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;GMI with Kmeans&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/1809.10341.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/zpeng27/GMI&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;DANMF&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DANMF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;DANMF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dl.acm.org/doi/pdf/10.1145/3269206.3271697&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/benedekrozemberczki/DANMF&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;MNMF&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MNMF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;MNMF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://ojs.aaai.org/index.php/AAAI/article/view/10488&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/AnryYang/M-NMF&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;VGAECD&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VGAECD&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;VGAECD&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span>
+        <span class="s2">&quot;https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8594831&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;CommunityGAN&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CommunityGAN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CommunityGAN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dl.acm.org/doi/pdf/10.1145/3308558.3313564&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/SamJia/CommunityGAN&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;gae_kmeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GAE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;GAE with Kmeans&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/1611.07308.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/tkipf/gae&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;vgae_kmeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;VGAE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;VGAE with Kmeans&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/1611.07308.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/tkipf/gae&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;DFCN&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DFCN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;DFCN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/2012.09600.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/WxTu/DFCN&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;AGE&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dl.acm.org/doi/pdf/10.1145/3394486.3403140&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/thunlp/AGE&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;DAEGC&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DAEGC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;DAEGC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.ijcai.org/Proceedings/2019/0509.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/Tiger101010/DAEGC&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;SEComm&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SEComm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;SEComm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span>
+        <span class="s2">&quot;https://proceedings.mlr.press/v161/bandyopadhyay21a/bandyopadhyay21a.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/viz27/SEComm&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;cc&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Contrastive Clustering&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/2009.09687.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/Yunfan-Li/Contrastive-Clustering&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;SDCN&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SDCN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;SDCN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/2002.01633.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/bdy9527/SDCN&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;SENet_kmeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SENet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;SENEet with kmeans&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span>
+        <span class="s2">&quot;https://www.sciencedirect.com/science/article/pii/S0893608021002227?via%3Dihub&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;ComE&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ComE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;ComE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dl.acm.org/doi/pdf/10.1145/3132847.3132925&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/andompesta/ComE&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;AGCN&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGCN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;AGCN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/ZhihaoPENG-CityU/MM21---AGCN&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;AGC&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AGC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;AGC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dl.acm.org/doi/abs/10.1145/3474085.3475276&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/karenlatong/AGC-master&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;GALA&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GALA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;GALA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/1908.02441v1.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/sseung0703/GALA_TF2.0&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;idec&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;idec&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;IDEC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dl.acm.org/doi/10.5555/3045390.3045442&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/piiswrong/dec&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;clusternet&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;clusternet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;ClusterNet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/abs/1905.13732&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/bwilder0/clusternet&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;GDCL&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;GDCL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;GDCL&quot;</span><span class="p">,</span>  <span class="c1"># BUG exits</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.ijcai.org/proceedings/2021/0473.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/hzhao98/GDCL&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;MVGRL&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MVGRL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;MVGRL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/abs/2006.05582&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/kavehhassani/mvgrl&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;SUBLIME&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;SUBLIME&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;SUBLIME&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paper url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://arxiv.org/pdf/2201.06367.pdf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source code&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/GRAND-Lab/SUBLIME&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
 <span class="p">}</span>
 
 
@@ -822,7 +956,9 @@
 
     <span class="n">subparsers</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;sub-command help&quot;</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">_model</span><span class="p">,</span> <span class="n">_help</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">_model</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># pylint: disable=invalid-sequence-index</span>
+        <span class="n">_help</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span>
         <span class="n">_parser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span>
             <span class="n">_model</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Run Graph Clustering on </span><span class="si">{</span><span class="n">_help</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>

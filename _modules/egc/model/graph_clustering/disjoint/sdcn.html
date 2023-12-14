@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>egc.model.graph_clustering.disjoint.sdcn &mdash; EGC 0.2.1 documentation</title>
+  <title>egc.model.graph_clustering.disjoint.sdcn &mdash; EGC 0.2.4 documentation</title>
       <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
@@ -15,7 +15,7 @@
   
         <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js?v=158ece9d"></script>
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js?v=4d875023"></script>
         <script src="../../../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -596,6 +596,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../rst/utils.html#module-egc.utils.evaluation">utils.evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../rst/utils.html#egc.utils.evaluation.purity"><code class="docutils literal notranslate"><span class="pre">purity()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../rst/utils.html#egc.utils.evaluation.best_mapping"><code class="docutils literal notranslate"><span class="pre">best_mapping()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../rst/utils.html#egc.utils.evaluation.evaluation"><code class="docutils literal notranslate"><span class="pre">evaluation()</span></code></a></li>
 </ul>
@@ -922,15 +923,17 @@
             <span class="n">p_pred</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span>
                 <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Get cluster result by P-distribution</span>
 
-            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">Q_ACC</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">evaluation</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">q_pred</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">Q_ACC</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">evaluation</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">q_pred</span><span class="p">)</span>
             <span class="p">(</span>
                 <span class="n">Z_ARI_score</span><span class="p">,</span>
                 <span class="n">Z_NMI_score</span><span class="p">,</span>
+                <span class="n">Z_AMI_score</span><span class="p">,</span>
                 <span class="n">Z_ACC_score</span><span class="p">,</span>
                 <span class="n">Z_Micro_F1_score</span><span class="p">,</span>
                 <span class="n">Z_Macro_F2_score</span><span class="p">,</span>
+                <span class="n">purity</span><span class="p">,</span>
             <span class="p">)</span> <span class="o">=</span> <span class="n">evaluation</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">z_pred</span><span class="p">)</span>
-            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">P_ACC</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">evaluation</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">p_pred</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">P_ACC</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">evaluation</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">p_pred</span><span class="p">)</span>
 
             <span class="n">kl_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">kl_div</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">log</span><span class="p">(),</span> <span class="n">p</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;batchmean&quot;</span><span class="p">)</span>
             <span class="n">ce_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">kl_div</span><span class="p">(</span><span class="n">pred</span><span class="o">.</span><span class="n">log</span><span class="p">(),</span> <span class="n">p</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;batchmean&quot;</span><span class="p">)</span>
@@ -941,9 +944,11 @@
                   <span class="sa">f</span><span class="s2">&quot;loss:</span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
                   <span class="sa">f</span><span class="s2">&quot;ARI:</span><span class="si">{</span><span class="n">Z_ARI_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
                   <span class="sa">f</span><span class="s2">&quot;NMI:</span><span class="si">{</span><span class="n">Z_NMI_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot;AMI:</span><span class="si">{</span><span class="n">Z_AMI_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
                   <span class="sa">f</span><span class="s2">&quot;ACC:</span><span class="si">{</span><span class="n">Z_ACC_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
                   <span class="sa">f</span><span class="s2">&quot;Micro F1:</span><span class="si">{</span><span class="n">Z_Micro_F1_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
                   <span class="sa">f</span><span class="s2">&quot;Macro F2:</span><span class="si">{</span><span class="n">Z_Macro_F2_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot;purity: </span><span class="si">{</span><span class="n">purity</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span>
                   <span class="sa">f</span><span class="s2">&quot;P_ACC:</span><span class="si">{</span><span class="n">P_ACC</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &quot;</span>
                   <span class="sa">f</span><span class="s2">&quot;Q_ACC:</span><span class="si">{</span><span class="n">Q_ACC</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
